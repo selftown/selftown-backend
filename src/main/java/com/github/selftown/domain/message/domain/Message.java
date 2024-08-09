@@ -1,5 +1,6 @@
-package com.github.selftown.repository.chat;
+package com.github.selftown.domain.message.domain;
 
+import com.github.selftown.domain.chat.domain.ChatRoom;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -20,5 +21,5 @@ public class Message {
 
     @ManyToOne
     @JoinColumn(name="chat_id")
-    private Chat chat;
+    private ChatRoom chat;
 }

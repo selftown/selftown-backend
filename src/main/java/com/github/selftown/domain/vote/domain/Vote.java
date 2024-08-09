@@ -1,7 +1,6 @@
-package com.github.selftown.repository.vote;
+package com.github.selftown.domain.vote.domain;
 
-import com.github.selftown.repository.likes.Likes;
-import com.github.selftown.repository.post.Post;
+import com.github.selftown.domain.post.domain.Post;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -22,7 +21,7 @@ public class Vote {
     @JoinColumn(name="post_id")
     private Post post;
 
-    @OneToMany(mappedBy = "vote_id", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @OneToMany(mappedBy = "vote", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private List<VoteOption> voteOptions = new ArrayList<>();
 
 

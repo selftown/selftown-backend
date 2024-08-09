@@ -1,12 +1,11 @@
-package com.github.selftown.repository.post;
+package com.github.selftown.domain.post.domain;
 
-import com.github.selftown.repository.comment.Comment;
-import com.github.selftown.repository.likes.Likes;
-import com.github.selftown.repository.user.User;
+import com.github.selftown.domain.comment.domain.Comment;
+import com.github.selftown.domain.likes.domain.Likes;
+import com.github.selftown.domain.user.domain.User;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;

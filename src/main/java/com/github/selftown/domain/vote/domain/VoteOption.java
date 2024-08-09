@@ -1,5 +1,6 @@
-package com.github.selftown.repository.vote;
+package com.github.selftown.domain.vote.domain;
 
+import com.github.selftown.domain.vote.domain.Vote;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -10,8 +11,8 @@ public class VoteOption {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
 
-    @Column(nullable = false)
-    private String option;
+    @Column(name="option_text", nullable = false)
+    private String optionText;
 
     @ManyToOne
     @JoinColumn(name ="vote_id")

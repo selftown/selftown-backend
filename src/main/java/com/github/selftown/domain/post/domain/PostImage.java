@@ -1,5 +1,6 @@
-package com.github.selftown.repository.post;
+package com.github.selftown.domain.post.domain;
 
+import com.github.selftown.domain.post.domain.Post;
 import jakarta.persistence.*;
 import lombok.Data;
 
