@@ -1,11 +1,9 @@
-package com.github.selftown.repository.likes;
+package com.github.selftown.domain.likes.domain;
 
-import com.github.selftown.repository.post.Post;
-import com.github.selftown.repository.user.User;
+import com.github.selftown.domain.post.domain.Post;
+import com.github.selftown.domain.user.domain.User;
 import jakarta.persistence.*;
 import lombok.Data;
-
-import java.sql.Timestamp;
 
 @Entity
 @Data

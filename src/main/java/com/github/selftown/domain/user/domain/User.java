@@ -1,9 +1,9 @@
-package com.github.selftown.repository.user;
+package com.github.selftown.domain.user.domain;
 
-import com.github.selftown.repository.chat.Chat;
-import com.github.selftown.repository.comment.Comment;
-import com.github.selftown.repository.likes.Likes;
-import com.github.selftown.repository.post.Post;
+import com.github.selftown.domain.chat.domain.ChatRoom;
+import com.github.selftown.domain.comment.domain.Comment;
+import com.github.selftown.domain.likes.domain.Likes;
+import com.github.selftown.domain.post.domain.Post;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -33,16 +33,16 @@ public class User {
     @Column(name = "updated_at", nullable = false)
     private Timestamp updatedAt;
 
-    @OneToMany(mappedBy = "user_id", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private List<Likes> likes = new ArrayList<>();
 
-    @OneToMany(mappedBy = "user_id", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
-    private List<Chat> chatRooms = new ArrayList<>();
+    @OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    private List<ChatRoom> chatRooms = new ArrayList<>();
 
-    @OneToMany(mappedBy = "user_id", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private List<Post> posts = new ArrayList<>();
 
-    @OneToMany(mappedBy = "user_id", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private List<Comment> comments = new ArrayList<>();
 
 
