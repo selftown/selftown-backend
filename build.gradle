@@ -26,6 +26,9 @@ dependencies {
 //    implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'com.auth0:java-jwt:3.4.0'
 
+    // webClient
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+
     // jwt
     implementation 'io.jsonwebtoken:jjwt:0.9.1'
     implementation 'com.sun.xml.bind:jaxb-impl:4.0.1'

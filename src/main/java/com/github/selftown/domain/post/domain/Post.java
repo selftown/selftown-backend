@@ -3,6 +3,7 @@ package com.github.selftown.domain.post.domain;
 import com.github.selftown.domain.comment.domain.Comment;
 import com.github.selftown.domain.likes.domain.Likes;
 import com.github.selftown.domain.user.domain.User;
+import com.github.selftown.global.common.domain.BaseEntity;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -12,11 +13,7 @@ import java.util.List;
 
 @Entity
 @Data
-public class Post {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
-
+public class Post extends BaseEntity {
     @Column(nullable = false)
     private String title;
 
@@ -34,12 +31,6 @@ public class Post {
 
     @Column(name = "comment_count",nullable = false)
     private Long commentCount;
-
-    @Column(name = "created_at", nullable = false)
-    private Timestamp createdAt;
-
-    @Column(name = "updated_at", nullable = false)
-    private Timestamp updatedAt;
 
     @ManyToOne
     @JoinColumn(name = "user_id")

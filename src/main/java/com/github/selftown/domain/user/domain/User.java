@@ -4,8 +4,12 @@ import com.github.selftown.domain.chat.domain.ChatRoom;
 import com.github.selftown.domain.comment.domain.Comment;
 import com.github.selftown.domain.likes.domain.Likes;
 import com.github.selftown.domain.post.domain.Post;
+import com.github.selftown.global.common.domain.BaseEntity;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -13,10 +17,14 @@ import java.util.List;
 
 @Entity
 @Data
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class User extends BaseEntity {
+
+    public enum Role {
+        GUEST, MEMBER, ADMIN
+    }
 
     @Column(name = "user_name", nullable = false)
     private String userName;
@@ -24,14 +32,18 @@ public class User {
     @Column(nullable = false)
     private String nickname;
 
-    @Column(name="porgile_image",nullable = false)
+    @Column(name="profile_image",nullable = false)
     private String profileImage;
 
-    @Column(name = "created_at", nullable = false)
-    private Timestamp createdAt;
+    @Column(name = "kakao_id", nullable = false, unique = true)  // 카카오 로그인 이메일 필드 추가
+    private Long kakaoId;
 
-    @Column(name = "updated_at", nullable = false)
-    private Timestamp updatedAt;
+    @Column(name = "email", nullable = false, unique = true)  // 카카오 로그인 이메일 필드 추가
+    private String email;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "role", nullable = false)
+    private Role role = Role.GUEST;
 
     @OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private List<Likes> likes = new ArrayList<>();
@@ -45,5 +57,11 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private List<Comment> comments = new ArrayList<>();
 
+    public void upgradeToMember() {
+        this.role = Role.MEMBER;
+    }
 
+    public void assignAdmin() {
+        this.role = Role.ADMIN;
+    }
 }
