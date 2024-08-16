@@ -1,4 +1,4 @@
-package com.github.selftown.global.common.domain;
+package com.github.selftown.domain.base;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
@@ -18,10 +18,6 @@ import java.time.LocalDateTime;
 @EntityListeners(AuditingEntityListener.class)
 
 public abstract class BaseEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
     @Column(name="created_at", updatable = false, nullable = false)
     @CreatedDate
     private LocalDateTime createdAt;
