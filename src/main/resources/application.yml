@@ -62,5 +62,12 @@ kakao:
     secret: ${KAKAO_CLIENT_SECRET}
     redirect-uri: ${KAKAO_REDIRECT_URI}
 
+app:
+  auth:
+    token-secret: "28LGwWp7BGCnJVDaDGp2Ee9B21vQmymZ"
+    access-token-expiry: 30
+    refresh-token-expiry: 10080
+    cookie-domain: "localhost"
+
 file:
   upload-dir: src/main/resources/static/images/

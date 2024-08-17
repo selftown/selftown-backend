@@ -1,6 +1,8 @@
 package com.github.selftown.global.config;
 
 
+import com.github.selftown.global.handler.OAuth2AuthenticationSuccessHandler;
+import com.github.selftown.global.jwt.AuthTokenProvider;
 import com.github.selftown.global.service.CustomOAuth2UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -17,6 +19,8 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
     private final CustomOAuth2UserService oAuth2UserService;
+    private final OAuth2AuthenticationSuccessHandler oAuth2AuthenticationSuccessHandler;
+    private final AuthTokenProvider authTokenProvider;
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
@@ -33,7 +37,7 @@ public class SecurityConfig {
                         .userInfoEndpoint(userInfo -> userInfo
                                 .userService(oAuth2UserService)
                         )
-//                        .successHandler()
+                        .successHandler(oAuth2AuthenticationSuccessHandler)
 //                        .failureHandler()
                 );
         return http.build();
