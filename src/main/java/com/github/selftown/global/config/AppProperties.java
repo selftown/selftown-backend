@@ -24,10 +24,10 @@ public class AppProperties {
         @Value("${TOKEN_SECRET}")
         private String tokenSecret;
 
-        @Value("30")
+
         private Long accessTokenExpiry;
 
-        @Value("10080")
+
         private long refreshTokenExpiry;
 
         @Value("localhost")

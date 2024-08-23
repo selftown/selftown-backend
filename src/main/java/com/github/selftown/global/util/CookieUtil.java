@@ -10,7 +10,7 @@ public class CookieUtil {
         cookie.setPath("/");
         cookie.setHttpOnly(true);
         cookie.setMaxAge(maxAge);
-        cookie.setSecure(true); // HTTPS에서만 전송 가능하도록 설정
+//        cookie.setSecure(true); // HTTPS에서만 전송 가능하도록 설정
         response.addCookie(cookie);
     }
 }

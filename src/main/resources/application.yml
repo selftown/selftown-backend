@@ -12,6 +12,7 @@ spring:
     multipart:
       max-file-size: 20MB
       max-request-size: 20MB
+      enabled: true
 
 
   datasource: # DATABASE
@@ -54,8 +55,8 @@ spring:
 api_prefix: /api
 
 kakao:
-  token-url: ${KAKAO_TOKEN_URL}
-  user-info-url: ${KAKAO_USER_INFO_URL}
+  token-url: https://kauth.kakao.com/oauth/token
+  user-info-url: https://kapi.kakao.com/v2/user/me
 
   client:
     id: ${KAKAO_CLIENT_ID}
@@ -64,10 +65,10 @@ kakao:
 
 app:
   auth:
-    token-secret: "28LGwWp7BGCnJVDaDGp2Ee9B21vQmymZ"
-    access-token-expiry: 30
+    token-secret: ${TOKEN_SECRET}
+    access-token-expiry: 30000
     refresh-token-expiry: 10080
     cookie-domain: "localhost"
 
 file:
-  upload-dir: src/main/resources/static/images/
+  upload-dir: src/main/resources/static/upload
